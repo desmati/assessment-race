@@ -28,7 +28,7 @@ This game does not have any external dependencies. It is built using plain HTML,
 
 ## Credits
 
-- The images in this project belong to their respective owners.
+- The images in this project belong to their respective owners. pngwing.com 
 
 ## License
 
