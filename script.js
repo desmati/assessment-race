@@ -155,7 +155,7 @@ function start() {
     for (x = 0; x < 10; x++) {
         let othercar = document.createElement('div');
         othercar.setAttribute('class', 'other');
-        othercar.classList.add("other-" + Math.floor(Math.random() * 3));
+        othercar.classList.add("other-" + Math.floor(Math.random() * 4));
         othercar.y = ((x + 1) * 550) * -1;
         othercar.style.top = othercar.y + 'px';
         othercar.style.left = randomLeft() + 'px';
