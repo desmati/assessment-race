@@ -2,10 +2,10 @@
 const score = document.querySelector('.Score');
 const startscreen = document.querySelector('.StartScreen');
 const gamearea = document.querySelector('.GameArea');
-let player = { speed: 3, score: 0 };
+let player = { speed: 1, score: 0 };
 let highest = 0;
 let keys = { ArrowUp: false, ArrowDown: false, ArrowRight: false, ArrowLeft: false };
-
+let speedInterval = null;
 
 startscreen.addEventListener('click', start);
 document.addEventListener('keydown', keyDown);
@@ -55,8 +55,13 @@ function moveCar(car) {
             console.log('HIT');
             endGame();
         }
+
+        // item.setAttribute('class', '');
+        // item.classList.add("other");
+        // item.classList.add("other-" + Math.floor(Math.random() * 3));
+
         if (item.y >= 750) {
-            item.y = -300;
+            item.y = -750;
             item.style.left = randomLeft() + 'px';
         }
         item.y += player.speed;
@@ -147,16 +152,27 @@ function start() {
     player.y = car.offsetTop;
 
 
-    for (x = 0; x < 3; x++) {
+    for (x = 0; x < 10; x++) {
         let othercar = document.createElement('div');
         othercar.setAttribute('class', 'other');
+        othercar.classList.add("other-" + Math.floor(Math.random() * 3));
         othercar.y = ((x + 1) * 550) * -1;
         othercar.style.top = othercar.y + 'px';
         othercar.style.left = randomLeft() + 'px';
+        console.log(othercar)
         gamearea.appendChild(othercar);
     }
 
     restartRecognition();
+
+    if (speedInterval) {
+        clearInterval(speedInterval);
+    }
+
+    speedInterval = setInterval(() => {
+        player.speed++;
+    }, 5000);
 }
 
 randomLeft = () => ([75, 275][Math.floor(Math.random() * 1000) % 2]);
+randomTop = () => ([75, 275][Math.floor(Math.random() * 1000) % 2]);
