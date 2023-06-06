@@ -11,10 +11,14 @@ top: 0;
 left: 0;
 }
 
-input{
-	position: absolute;
-	width: calc(100% -20px);
-	padding: 10px;
-	margin: 10px;
-	z-index: 100;
+button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #f2f2f2;
+  color: #333;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
 }
