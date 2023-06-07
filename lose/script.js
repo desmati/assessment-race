@@ -7,7 +7,7 @@ window.addEventListener("load", function () {
   const ctx = canvas.getContext("2d");
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  console.log(ctx);
+
   class Particle {
     constructor(effect, x, y, color) {
       this.effect = effect;
@@ -32,8 +32,18 @@ window.addEventListener("load", function () {
       this.effect.context.fillRect(this.x, this.y, this.size, this.size);
     }
     update() {
-      this.x += (this.originX - this.x) * this.ease;
-      this.y += (this.originY - this.y) * this.ease;
+      this.dx = this.effect.mouse.x - this.x;
+      this.dy = this.effect.mouse.y - this.y;
+      this.distance = this.dx * this.dx + this.dy * this.dy;
+      this.force = -this.effect.mouse.radius / this.distance;
+      if (this.distance < this.effect.mouse.radius) {
+        this.angle = Math.atan2(this.dy, this.dx);
+        this.vx += this.force * Math.cos(this.angle);
+        this.vy += this.force * Math.sin(this.angle);
+      }
+
+      this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease;
+      this.y += (this.vy *= this.friction) + (this.originY - this.y) * this.ease;
     }
   }
 
@@ -64,14 +74,15 @@ window.addEventListener("load", function () {
       //canvas setting
       const gradient = this.context.createLinearGradient(0, 0, this.canvasWidth, this.canvasHeight);
       gradient.addColorStop(0.3, "red");
-      gradient.addColorStop(0.5, "fuchsia");
-      gradient.addColorStop(0.7, "purple");
+      gradient.addColorStop(0.5, "orange");
+      gradient.addColorStop(0.7, "yellow");
       this.context.fillStyle = gradient;
       this.context.textAlign = "center";
       this.context.textBaseline = "middle";
       this.context.strokeStyle = "white";
+      this.context.letterSpacing = "5px";
       this.context.lineWidth = 3;
-      this.context.font = this.fontSize + "px Helvetica";
+      this.context.font = this.fontSize + "px Impact";
 
       //break multiple text
       let linesArray = [];
@@ -114,7 +125,6 @@ window.addEventListener("load", function () {
           }
         }
       }
-      console.log(this.particles);
     }
     render() {
       this.particles.forEach((particle) => {
