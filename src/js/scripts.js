@@ -392,13 +392,6 @@ function init() {
     document.addEventListener("keyup", onDocumentKeyUp, false);
 }
 
-function animate() {
-    requestAnimationFrame(animate);
-    entityManager.update(0);
-    update();
-    renderer.render(scene, camera);
-}
-
 function update() {
     if (isPaused) {
         return; // Exit the function without updating the movement
@@ -577,8 +570,15 @@ function getRandomInt(min, max) {
 }
 
 // Render loop
+// function animate() {
+//     requestAnimationFrame(animate);
+//     update();
+//     renderer.render(scene, camera);
+// }
+
 function animate() {
     requestAnimationFrame(animate);
+    entityManager.update(0);
     update();
     renderer.render(scene, camera);
 }
