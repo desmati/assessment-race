@@ -70,7 +70,7 @@ function initStartPage() {
     document.getElementById("welcome-container").style.display = "block";
     document.getElementById("game-container").style.display = "none";
     document.getElementById("instructions-container").style.display = "none";
-    document.getElementById("canvas1-lost").style.display = "none";
+    document.getElementById("canvas1-win").style.display = "none";
 
     let tl = gsap.timeline();
     tl.set(".welcome-container", { scale: 0.1 })
@@ -134,7 +134,7 @@ function initStartPage() {
         document.getElementById("welcome-container").style.display = "none";
         document.getElementById("game-container").style.display = "none";
         document.getElementById("instructions-container").style.display = "block";
-        document.getElementById("canvas1-lost").style.display = "none";
+        document.getElementById("canvas1-win").style.display = "none";
         initInstructions();
     });
 }
@@ -145,7 +145,7 @@ function initInstructions() {
         document.getElementById("welcome-container").style.display = "none";
         document.getElementById("game-container").style.display = "block";
         document.getElementById("instructions-container").style.display = "none";
-        document.getElementById("canvas1-lost").style.display = "none";
+        document.getElementById("canvas1-win").style.display = "none";
 
         setTimeout(() => {
             init3dGame();
@@ -1016,12 +1016,12 @@ async function startAudioPlayback() {
 
 function initPassedMessage() {
 
-    document.getElementById("canvas1-lost").style.display = "block";
+    document.getElementById("canvas1-win").style.display = "block";
     document.getElementById("welcome-container").style.display = "none";
     document.getElementById("game-container").style.display = "none";
     document.getElementById("instructions-container").style.display = "none";
 
-    const canvas = document.getElementById("canvas1-lost");
+    const canvas = document.getElementById("canvas1-win");
     const ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;

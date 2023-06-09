@@ -222,14 +222,14 @@ instructions-container {
 }
 
 
-#canvas1-lost canvas {
+#canvas1-win canvas {
     background-color: black;
     position: absolute;
     top: 0;
     left: 0;
 }
 
-#canvas1-lost button {
+#canvas1-win button {
     position: absolute;
     top: 20px;
     left: 20px;
