@@ -1,29 +1,16 @@
+<!DOCTYPE html>
 <html lang="en">
-<base href="/" />
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="/style.css"> -->
-    <title>WEBGL</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        canvas {
-            display: block;
-        }
-    </style>
-</head>
-
-<body>
-    iuuglkhglhkgk
-    <% for (var js in htmlWebpackPlugin.files.js) { %>
-        <script src="<%= htmlWebpackPlugin.files.js[js] %>"></script>
-    <% } %>
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, shrink-to-fit=0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>Three.js Starter Template</title>
+  </head>
+  <body>
+    <div id="container"></div>
+    <div id="veil"></div>
+    <script src="./index.js" type="module"></script>
+    <a href="./assets/model.gltf" style="display: none;"></a>
+    <a href="./assets/CesiumMan_data.bin" style="display: none;"></a>
+    <a href="./assets/CesiumMan_img0.jpg" style="display: none;"></a>
+  </body>
 </html>

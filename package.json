@@ -2,10 +2,11 @@
   "name": "assessment-race",
   "version": "1.0.0",
   "description": "Assessment Race is a simple race game implemented in HTML, CSS, and JavaScript that incorporates the use of the Web Speech API.",
-  "main": "recognition.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"webpack serve"
+    "start-webpack": "webpack serve",
+    "start": "parcel src/index.html --open",
+    "build": "parcel build src/index.html --public-url ./"
   },
   "repository": {
     "type": "git",
@@ -18,14 +19,16 @@
     "url": "https://github.com/desmati/assessment-race/issues"
   },
   "homepage": "https://github.com/desmati/assessment-race#readme",
-	"devDependencies": {
-		"html-webpack-plugin": "^5.5.1",
-		"webpack": "^5.83.1",
-		"webpack-cli": "^5.1.1",
-		"webpack-dev-server": "^4.15.0"
-	},
-	"dependencies": {
-		"babel-loader": "^9.1.2",
-		"dat.gui": "^0.7.9"
-	}
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.1",
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0",
+    "parcel": "^2.7.0"
+  },
+  "dependencies": {
+    "babel-loader": "^9.1.2",
+    "dat.gui": "0.x",
+    "three": "0.x"
+  }
 }
