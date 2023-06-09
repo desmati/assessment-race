@@ -1,6 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background-color: #fff;
-    overflow: hidden;
+    overflow-x: hidden;
     padding: 0;
     margin: 0;
 }
@@ -9,6 +15,10 @@ canvas {
     display: block;
     margin: 0 auto;
     top: 50px;
+}
+
+#game-container {
+    display: none;
 }
 
 .score-container {
@@ -26,7 +36,207 @@ canvas {
     font-weight: 700;
 }
 
-#scene{
- margin: 0;  
- border:0 none; 
+#scene {
+    margin: 0;
+    border: 0 none;
+}
+
+
+/* " Welcome Page " */
+.welcome-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.welcome-container .button-groups a {
+    padding: 8px 16px;
+    background-color: #fff;
+    color: black;
+    border-radius: 1rem;
+    border: none;
+    margin: 0 0.5rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.welcome-container .button-groups a:active {
+    background-color: green;
+    color: white;
+}
+
+.welcome-container h1 {
+    color: #fff;
+    letter-spacing: 3px;
+    margin: 3rem;
+    font-weight: 800;
+}
+
+.welcome-container .demo>div {
+    color: #fff;
+    margin: 1rem 0rem
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* "Instructions Page" */
+
+instructions-container {
+    display: none;
+}
+
+#instructions-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+#instructions-container .first,
+#instructions-container .second,
+#instructions-container .third,
+#instructions-container .fourth {
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+}
+
+#instructions-container .first {
+    padding: 2rem;
+    display: grid;
+    place-content: center;
+}
+
+#instructions-container .first h2 {
+    color: #fff;
+
+}
+
+#instructions-container .first p {
+    color: white;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+#instructions-container .second {
+    display: flex;
+}
+
+#instructions-container .content {
+    border: 1px solid #fff;
+    width: 50%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+    color: white;
+}
+
+#instructions-container .content a {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: #fff;
+    background-color: #000;
+}
+
+#instructions-container .content p {
+    font-size: 24px;
+    color: white;
+}
+
+#instructions-container .third,
+#instructions-container .fourth {
+    color: white;
+}
+
+@media screen and (max-width: 992px) {
+    #instructions-container .second {
+        flex-direction: column;
+    }
+
+    #instructions-container .content {
+        width: 100%;
+    }
+}
+
+#instructions-container .amin {
+    padding: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+#instructions-container .amin button {
+    background-color: palevioletred;
+    border-radius: 1rem;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+}
+
+#instructions-container .amin button:active {
+    background-color: black;
+}
+
+#instructions-container .amin img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+#instructions-container .amin2 img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+#instructions-container .fourth .amin2 {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+
+#canvas1-lost canvas {
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#canvas1-lost button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #f2f2f2;
+    color: #333;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
 }
