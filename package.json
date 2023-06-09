@@ -1,0 +1,32 @@
+{
+  "name": "assessment-race",
+  "version": "2.0.0",
+  "description": "Assessment Race is a simple race game implemented in HTML, CSS, and JavaScript that incorporates the use of the Web Speech API.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx parcel ./src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/desmati/assessment-race.git"
+  },
+  "keywords": [],
+  "author": "Hyper Island Team 5",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/desmati/assessment-race/issues"
+  },
+  "homepage": "https://github.com/desmati/assessment-race#readme",
+  "devDependencies": {
+    "@parcel/config-default": "^2.4.0",
+    "parcel-reporter-static-files-copy": "^1.3.4"
+  },
+  "dependencies": {
+    "parcel": "^2.9.2",
+    "three": "^0.139.0",
+    "yuka": "^0.7.7"
+  },
+  "staticFiles": {
+    "staticOutPath": "assets"
+  }
+}
