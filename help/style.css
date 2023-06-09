@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.first,
+.second,
+.third,
+.fourth {
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+}
+.first {
+  padding: 2rem;
+  display: grid;
+  place-content: center;
+}
+.first h2{
+ color: #fff;
+
+}
+
+.first p {
+  color: white;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  text-align: center;
+}
+.second {
+  display: flex;
+}
+.content {
+  border: 1px solid #fff;
+  width: 50%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 4rem;
+  color: white;
+}
+.content a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  background-color: #000;
+}
+.content p {
+  font-size: 24px;
+  color: white;
+}
+.third,
+.fourth {
+  color: white;
+}
+@media screen and (max-width: 992px) {
+  .second {
+    flex-direction: column;
+  }
+  .content {
+    width: 100%;
+  }
+}
+.amin {
+  padding: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4rem;
+}
+.amin button {
+  background-color: palevioletred;
+  border-radius: 1rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: white;
+}
+.amin button:active {
+  background-color: black;
+}
+
+.amin img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+.amin2 img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+.fourth .amin2 {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
