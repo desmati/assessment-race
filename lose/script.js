@@ -132,10 +132,17 @@ window.addEventListener("load", function () {
         particle.draw();
       });
     }
+    resize(width, height) {
+      this.canvasWidth = width;
+      this.canvasHeight = height;
+      this.textX = this.canvasWidth / 2;
+      this.textY = this.canvasHeight / 2;
+      this.maxTextWidth = this.canvasWidth * 0.4;
+    }
   }
 
   const effect = new Effect(ctx, canvas.width, canvas.height);
-  effect.wrapText("you failed! Try again in reassessment");
+  effect.wrapText("you failed! Try again");
   effect.render();
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -143,4 +150,12 @@ window.addEventListener("load", function () {
     requestAnimationFrame(animate);
   }
   animate();
+
+  window.addEventListener("resize", function () {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    effect.resize(canvas.width, canvas.height);
+    effect.wrapText("you failed! Try again");
+    console.log("resize");
+  });
 });
