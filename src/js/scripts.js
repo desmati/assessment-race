@@ -6,6 +6,7 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
 import * as YUKA from 'yuka';
 import playAudio from './play-audio';
 
+
 // 3D effects:
 let initedEffects = false;
 var noise = new SimplexNoise();
@@ -57,8 +58,214 @@ let id = 0;
 let crashId = " ";
 let lastCrashId = " ";
 
-init();
-animate();
+// init3dGame();
+
+// initPassedMessage();
+
+initStartPage();
+
+// initInstructions();
+
+function initStartPage() {
+    document.getElementById("welcome-container").style.display = "block";
+    document.getElementById("game-container").style.display = "none";
+    document.getElementById("instructions-container").style.display = "none";
+    document.getElementById("canvas1-lost").style.display = "none";
+
+    let tl = gsap.timeline();
+    tl.set(".welcome-container", { scale: 0.1 })
+        .to(".welcome-container", { scale: 1, duration: 3 })
+        .from("h1", {
+            opacity: 0,
+            duration: 1.5,
+        })
+        .from(".demo div", { y: 80, opacity: 0, stagger: 0.5 })
+        .to(".demo div", {
+            opacity: 0.85,
+            stagger: {
+                each: 0.1,
+                start: "random",
+            },
+        })
+        .to(".demo div", {
+            opacity: 0.85,
+            stagger: {
+                each: 0.5,
+                start: "random",
+            },
+
+            x: function (index, target) {
+                var itemWidth = target.offsetWidth;
+                var containerWidth = window.innerWidth;
+                var padding = 20;
+
+                var startPosition =
+                    containerWidth / 2.5 -
+                    (itemWidth + padding) *
+                    Math.floor(
+                        gsap.utils.wrap(
+                            0,
+                            containerWidth / (itemWidth + padding) - 1,
+                            index
+                        )
+                    );
+
+                return startPosition + Math.random() * padding;
+            },
+            rotation: 360,
+            color: "#02FF86",
+        })
+        .to(".demo div", {
+            scale: 0,
+            stagger: { start: "end", each: 1, opacity: 0 },
+        })
+        .from(
+            ".button-groups a",
+            {
+                ease: "Bounce.easeIn",
+                opacity: 0,
+                duration: 3,
+                scale: 0,
+            },
+            "-=2"
+        )
+
+    document.getElementById("enter-start").addEventListener('click', () => {
+        document.getElementById("welcome-container").style.display = "none";
+        document.getElementById("game-container").style.display = "none";
+        document.getElementById("instructions-container").style.display = "block";
+        document.getElementById("canvas1-lost").style.display = "none";
+        initInstructions();
+    });
+}
+
+function initInstructions() {
+
+    document.getElementById("instructions-start-game").addEventListener('click', () => {
+        document.getElementById("welcome-container").style.display = "none";
+        document.getElementById("game-container").style.display = "block";
+        document.getElementById("instructions-container").style.display = "none";
+        document.getElementById("canvas1-lost").style.display = "none";
+
+        setTimeout(() => {
+            init3dGame();
+        }, 200);
+    });
+
+    gsap.registerPlugin(ScrollTrigger);
+    let tl = gsap.timeline();
+    tl.fromTo(
+        "#instructions-container .content",
+        { yPercent: 10, scale: 0.2 },
+        {
+            opacity: 1,
+            yPercent: 0,
+            scale: 1,
+            scrollTrigger: {
+                trigger: ".second",
+                start: "top center",
+                end: "center 50%",
+
+                scrub: true,
+            },
+        }
+    )
+        .fromTo(
+            "#instructions-container .amin",
+            { xPercent: -100, scale: 0.6, opacity: 0 },
+            {
+                opacity: 1,
+                xPercent: 0,
+                scale: 1,
+                scrollTrigger: {
+                    trigger: ".third ",
+                    start: "top center",
+                    end: "center 50%",
+
+                    scrub: true,
+                },
+            }
+        )
+        .fromTo(
+            "#instructions-container .amin2",
+            { xPercent: 100, scale: 0.2, opacity: 0, duration: 1 },
+            {
+                opacity: 1,
+                xPercent: 0,
+                scale: 1,
+                scrollTrigger: {
+                    trigger: ".fourth ",
+                    start: "top bottom",
+                    end: "center 50%",
+
+                    scrub: true,
+                },
+            }
+        );
+
+    //
+    gsap.utils.toArray("#instructions-container .layer").forEach((layer, i) => {
+        ScrollTrigger.create({
+            trigger: layer,
+            start: "top top",
+            pin: true,
+            pinSpacing: false,
+        });
+    });
+    //
+
+    // Create a new timeline
+    const tl2 = gsap.timeline();
+    const group = document.querySelectorAll("#Aria, #Amin ,#Regan,#Ila,#Hossein");
+
+    tl2
+        .set(group, { opacity: 0, scale: 0 })
+        .to(group, {
+            stagger: {
+                each: 0.6,
+            },
+            scale: 1,
+            opacity: 1,
+        })
+        .fromTo('.first h2', {
+
+            scale: 0.5,
+            opacity: 0
+        }, {
+            x: 50,
+            y: -150,
+            scale: 1,
+            duration: 3,
+            opacity: 1
+        })
+
+
+
+
+}
+
+function init3dGame() {
+
+    // Event listeners
+    document.addEventListener("keydown", onDocumentKeyDown, false);
+    document.addEventListener("keyup", onDocumentKeyUp, false);
+
+    window.addEventListener('resize', function () {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+
+    init();
+    animate();
+
+
+
+}
+
+
+
 
 function init() {
     const fontLoader = new FontLoader();
@@ -369,17 +576,6 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Event listeners
-document.addEventListener("keydown", onDocumentKeyDown, false);
-document.addEventListener("keyup", onDocumentKeyUp, false);
-
-window.addEventListener('resize', function () {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
-
-
 // Render loop
 function animate() {
     requestAnimationFrame(animate);
@@ -390,13 +586,6 @@ function animate() {
 function sync(entity, renderComponent) {
     renderComponent.matrix.copy(entity.worldMatrix);
 }
-
-// Start the animation loop
-animate();
-
-
-// renderer.setAnimationLoop(animate);
-
 
 function crashed() {
     playAudio('./assets/explode.mp3');
@@ -493,17 +682,19 @@ function displayWinDialogBox() {
             return;
         }
 
-        const passProbability = 1;
-        const noPassProbability = 5;
+        const passProbability = 2;
+        const noPassProbability = 1;
 
         const totalProbability = passProbability + noPassProbability;
         const threshold = Math.random() * totalProbability;
 
-        if (threshold < noPassProbability) {
+        if (threshold < passProbability) {
             isFinished = true;
             textOffHands.visible = true;
         } else {
             textGotP.visible = true;
+            initPassedMessage();
+
         }
 
     }, 100);
@@ -819,3 +1010,170 @@ async function startAudioPlayback() {
 
 
 //#endregion
+
+
+
+
+function initPassedMessage() {
+
+    document.getElementById("canvas1-lost").style.display = "block";
+    document.getElementById("welcome-container").style.display = "none";
+    document.getElementById("game-container").style.display = "none";
+    document.getElementById("instructions-container").style.display = "none";
+
+    const canvas = document.getElementById("canvas1-lost");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    class Particle {
+        constructor(effect, x, y, color) {
+            this.effect = effect;
+            this.x = Math.random() * this.effect.canvasWidth;
+            this.y = this.effect.canvasHeight;
+            this.color = color;
+            this.originX = x;
+            this.originY = y;
+            this.size = this.effect.gap;
+            this.dx = 0;
+            this.dy = 0;
+            this.vx = 0;
+            this.vy = 0;
+            this.force = 0;
+            this.angle = 0;
+            this.distance = 0;
+            this.friction = Math.random() * 0.6 + 0.15;
+            this.ease = Math.random() * 0.1 + 0.005;
+        }
+        draw() {
+            this.effect.context.fillStyle = this.color;
+            this.effect.context.fillRect(this.x, this.y, this.size, this.size);
+        }
+        update() {
+            this.dx = this.effect.mouse.x - this.x;
+            this.dy = this.effect.mouse.y - this.y;
+            this.distance = this.dx * this.dx + this.dy * this.dy;
+            this.force = -this.effect.mouse.radius / this.distance;
+            if (this.distance < this.effect.mouse.radius) {
+                this.angle = Math.atan2(this.dy, this.dx);
+                this.vx += this.force * Math.cos(this.angle);
+                this.vy += this.force * Math.sin(this.angle);
+            }
+
+            this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease;
+            this.y += (this.vy *= this.friction) + (this.originY - this.y) * this.ease;
+        }
+    }
+
+    class Effect {
+        constructor(context, canvasWidth, canvasHeight) {
+            this.context = context;
+            this.canvasWidth = canvasWidth;
+            this.canvasHeight = canvasHeight;
+            this.textX = this.canvasWidth / 2;
+            this.textY = this.canvasHeight / 2;
+            this.fontSize = 130;
+            this.lineHeight = this.fontSize * 0.9;
+            this.maxTextWidth = this.canvasWidth * 0.4;
+            //particles text
+            this.particles = [];
+            this.gap = 3;
+            this.mouse = {
+                radius: 20000,
+                x: 0,
+                y: 0,
+            };
+            window.addEventListener("mousemove", (e) => {
+                this.mouse.x = e.x;
+                this.mouse.y = e.y;
+            });
+        }
+        wrapText(text) {
+            //canvas setting
+            const gradient = this.context.createLinearGradient(0, 0, this.canvasWidth, this.canvasHeight);
+            gradient.addColorStop(0.3, "red");
+            gradient.addColorStop(0.5, "orange");
+            gradient.addColorStop(0.7, "yellow");
+            this.context.fillStyle = gradient;
+            this.context.textAlign = "center";
+            this.context.textBaseline = "middle";
+            this.context.strokeStyle = "white";
+            this.context.letterSpacing = "5px";
+            this.context.lineWidth = 3;
+            this.context.font = this.fontSize + "px Impact";
+
+            //break multiple text
+            let linesArray = [];
+            let words = text.split(" ");
+            let lineCounter = 0;
+            let line = " ";
+            for (let i = 0; i < words.length; i++) {
+                let testLine = line + words[i] + " ";
+                if (this.context.measureText(testLine).width > this.maxTextWidth) {
+                    line = words[i] + " ";
+                    lineCounter++;
+                } else {
+                    line = testLine;
+                }
+                linesArray[lineCounter] = line;
+            }
+            let textHeight = this.lineHeight * lineCounter;
+            this.textY = this.canvasHeight / 2 - textHeight / 2;
+            linesArray.forEach((el, index) => {
+                this.context.fillText(el, this.textX, this.textY + index * this.lineHeight);
+                this.context.strokeText(el, this.textX, this.textY + index * this.lineHeight);
+            });
+            this.convertToParticles();
+        }
+
+        convertToParticles() {
+            this.particles = [];
+            const pixels = this.context.getImageData(0, 0, this.canvasWidth, this.canvasHeight).data;
+            this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+            for (let y = 0; y < this.canvasHeight; y += this.gap) {
+                for (let x = 0; x < this.canvasWidth; x += this.gap) {
+                    const index = (y * this.canvasWidth + x) * 4;
+                    const alpha = pixels[index + 3];
+                    if (alpha > 0) {
+                        const red = pixels[index];
+                        const green = pixels[index + 1];
+                        const blue = pixels[index + 2];
+                        const color = "rgb(" + red + "," + green + "," + blue + ")";
+                        this.particles.push(new Particle(this, x, y, color));
+                    }
+                }
+            }
+        }
+        render() {
+            this.particles.forEach((particle) => {
+                particle.update();
+                particle.draw();
+            });
+        }
+        resize(width, height) {
+            this.canvasWidth = width;
+            this.canvasHeight = height;
+            this.textX = this.canvasWidth / 2;
+            this.textY = this.canvasHeight / 2;
+            this.maxTextWidth = this.canvasWidth * 0.4;
+        }
+    }
+
+    const effect = new Effect(ctx, canvas.width, canvas.height);
+    effect.wrapText("You passed! Congrats!");
+    effect.render();
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        effect.render();
+        requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener("resize", function () {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        effect.resize(canvas.width, canvas.height);
+        effect.wrapText("You passed! Congrats!");
+        console.log("resize");
+    });
+}

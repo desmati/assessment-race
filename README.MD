@@ -1,37 +1,59 @@
-# Assessment Race
+# Hyper Island Assessment Race
 
-Assessment Race is a simple race game implemented in HTML, CSS, and JavaScript that incorporates the use of the Web Speech API.
+[![License](https://img.shields.io/badge/license-ISC-blue.svg)](LICENSE)
 
-## Objective
+Hyper Island Assessment Race is an exciting game where players assist students in driving their car and navigating through a series of assessors without colliding with them. The objective is to reach a 100% score and successfully pass the assessments.
 
-The objective of the game is to help the student drive their car and navigate through a series of assessors standing in their way without colliding with them. The ultimate goal is to reach the finish line and pass all their assessments.
+## Table of Contents
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Features
 
-- Control the car's movement using the arrow keys (up, down, left, right).
-- Alternatively, you can use voice commands ("left" and "right") to move the car.
-- Avoid collisions with assessors on the road.
-- The game keeps track of your score, displaying your current score and the highest score achieved.
+- Engaging race gameplay
+- Physics and controls
+- Various assessors characters
+- Score tracking and progress indicator
+- Multiple levels with increasing difficulty
 
-## Getting Started
+## Screenshots
 
-To play the game, follow these steps:
+![Screenshot 1](screenshots/ss1.png)
+> Game environment
 
-1. Clone or download the repository.
-2. Open the `index.html` file in a web browser.
-3. Click the "Start Game" button to begin.
-4. Use the arrow keys or voice commands to control the car's movement.
 
-## Dependencies
 
-This game does not have any external dependencies. It is built using plain HTML, CSS, and JavaScript.
+## Installation
 
-## Credits
+1. Clone the repository
+2. Navigate to the project directory: 
+3. Install the required dependencies: `npm install`
 
-- The images in this project belong to their respective owners. pngwing.com 
+## Usage
+
+1. Launch the game: `npm start`
+2. Use the arrow keys or WASD for car movement and steering.
+3. Avoid colliding with assessors to maintain a high score.
+4. Complete the race by reaching a 100% score to pass the assessments.
+
+## Contributing
+
+Contributions are welcome! Here's how you can contribute to the project:
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/your-feature`
+3. Make your changes and commit them: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/your-feature`
+5. Open a pull request.
+
+Please ensure that your code follows the project's coding conventions and includes appropriate documentation.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [ISC License](LICENSE).
 
-Feel free to clone, modify, and distribute this repository as per the license terms.
+---
