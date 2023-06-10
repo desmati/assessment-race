@@ -1,0 +1,50 @@
+/* " Welcome Page " */
+.welcome-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.welcome-container .button-groups a {
+    padding: 8px 16px;
+    background-color: #fff;
+    color: black;
+    border-radius: 1rem;
+    border: none;
+    margin: 0 0.5rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.welcome-container .button-groups a:active {
+    background-color: green;
+    color: white;
+}
+
+.welcome-container h1 {
+    color: #fff;
+    letter-spacing: 3px;
+    margin: 3rem;
+    font-weight: 800;
+}
+
+.welcome-container .demo>div {
+    color: #fff;
+    margin: 1rem 0rem
+}
+
+
+
+
+
+
+
+
+
+

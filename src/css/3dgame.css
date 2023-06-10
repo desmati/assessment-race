@@ -1,0 +1,23 @@
+#game-container {
+    display: none;
+}
+
+.score-container {
+    /*background-color: red;*/
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: transform 0.5s 4s;
+}
+
+.score-container #score {
+    color: white;
+    font-size: 8vh;
+    font-family: 'Exo', sans-serif;
+    font-weight: 700;
+}
+
+#scene {
+    margin: 0;
+    border: 0 none;
+}

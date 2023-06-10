@@ -72,6 +72,14 @@ function initStartPage() {
     document.getElementById("instructions-container").style.display = "none";
     document.getElementById("canvas1-win").style.display = "none";
 
+    document.getElementById("enter-start").addEventListener('click', () => {
+        initInstructions();
+    });
+
+    document.getElementById("enter-play").addEventListener('click', () => {
+        init3dGame();
+    });
+
     let tl = gsap.timeline();
     tl.set(".welcome-container", { scale: 0.1 })
         .to(".welcome-container", { scale: 1, duration: 3 })
@@ -130,23 +138,17 @@ function initStartPage() {
             "-=2"
         )
 
-    document.getElementById("enter-start").addEventListener('click', () => {
-        document.getElementById("welcome-container").style.display = "none";
-        document.getElementById("game-container").style.display = "none";
-        document.getElementById("instructions-container").style.display = "block";
-        document.getElementById("canvas1-win").style.display = "none";
-        initInstructions();
-    });
+    
 }
 
 function initInstructions() {
 
-    document.getElementById("instructions-start-game").addEventListener('click', () => {
-        document.getElementById("welcome-container").style.display = "none";
-        document.getElementById("game-container").style.display = "block";
-        document.getElementById("instructions-container").style.display = "none";
-        document.getElementById("canvas1-win").style.display = "none";
+    document.getElementById("welcome-container").style.display = "none";
+    document.getElementById("game-container").style.display = "none";
+    document.getElementById("instructions-container").style.display = "block";
+    document.getElementById("canvas1-win").style.display = "none";
 
+    document.getElementById("instructions-start-game").addEventListener('click', () => {
         setTimeout(() => {
             init3dGame();
         }, 200);
@@ -246,6 +248,11 @@ function initInstructions() {
 
 function init3dGame() {
 
+    document.getElementById("welcome-container").style.display = "none";
+    document.getElementById("game-container").style.display = "block";
+    document.getElementById("instructions-container").style.display = "none";
+    document.getElementById("canvas1-win").style.display = "none";
+
     // Event listeners
     document.addEventListener("keydown", onDocumentKeyDown, false);
     document.addEventListener("keyup", onDocumentKeyUp, false);
@@ -263,9 +270,6 @@ function init3dGame() {
 
 
 }
-
-
-
 
 function init() {
     const fontLoader = new FontLoader();
@@ -569,13 +573,6 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Render loop
-// function animate() {
-//     requestAnimationFrame(animate);
-//     update();
-//     renderer.render(scene, camera);
-// }
-
 function animate() {
     requestAnimationFrame(animate);
     entityManager.update(0);
@@ -848,8 +845,6 @@ function makeRoughGround(mesh, distortionFr) {
 
 //#endregion
 
-
-
 //#region Audio
 
 async function loadAudio(url, progressCallback) {
@@ -937,7 +932,6 @@ function toHexColor(floatNumber) {
 
 //#endregion
 
-
 //#region " Visualize "
 
 // Define a function to update the rotation based on the audio data
@@ -1010,9 +1004,6 @@ async function startAudioPlayback() {
 
 
 //#endregion
-
-
-
 
 function initPassedMessage() {
 
