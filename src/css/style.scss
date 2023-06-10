@@ -1,4 +1,14 @@
-$primary-color: #fff;
+$primary-color: #ffffff;
+
+//center item shared
+
+%center-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+//end of center item shared
+
 * {
   margin: 0;
   padding: 0;
@@ -10,35 +20,7 @@ body {
   padding: 0;
   margin: 0;
 }
-canvas {
-  display: block;
-  margin: 0 auto;
-  top: 50px;
-}
 
-#game-container {
-  display: none;
-}
-
-.score-container {
-  /*background-color: red;*/
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  transition: transform 0.5s 4s;
-}
-
-.score-container #score {
-  color: white;
-  font-size: 8vh;
-  font-family: "Exo", sans-serif;
-  font-weight: 700;
-}
-
-#scene {
-  margin: 0;
-  border: 0 none;
-}
 //start sass
 //welcome Container
 
@@ -48,9 +30,8 @@ canvas {
   background-color: black;
   margin: 0 auto;
   padding: 1rem;
-  display: flex;
+  @extend %center-item;
   flex-direction: column;
-  align-items: center;
   gap: 1rem;
   h1 {
     color: $primary-color;
@@ -60,9 +41,7 @@ canvas {
     text-align: center;
   }
   .demo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @extend %center-item;
     flex-direction: column;
     div {
       color: $primary-color;
@@ -70,8 +49,7 @@ canvas {
     }
   }
   .button-groups {
-    display: grid;
-    place-content: center;
+    @extend %center-item;
     a {
       padding: 8px 16px;
       background-color: $primary-color;
@@ -93,11 +71,22 @@ canvas {
 
 //game Container
 .game-container {
+  display: none;
   .score-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: transform 0.5s 4s;
     #score {
+      color: white;
+      font-size: 8vh;
+      font-family: "Exo", sans-serif;
+      font-weight: 700;
     }
   }
   #scene {
+    margin: 0;
+    border: 0 none;
   }
 }
 
@@ -182,9 +171,7 @@ canvas {
     @extend %section-shared;
     .amin {
       padding: 4rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @extend %center-item;
       flex-direction: column;
       gap: 4rem;
       p {
@@ -212,10 +199,8 @@ canvas {
     @extend %section-shared;
     .amin2 {
       padding: 2rem;
-      display: flex;
-      align-items: center;
+      @extend %center-item;
       flex-direction: column;
-      justify-content: center;
       gap: 2rem;
       p {
       }
@@ -228,7 +213,7 @@ canvas {
         border-radius: 1rem;
       }
       .btn-start {
-        padding: .5rem;
+        padding: 0.5rem;
         width: 100px;
         height: 50px;
         border: none;
@@ -255,8 +240,10 @@ canvas {
 .canvasEl {
   background-color: black;
   position: absolute;
-  top: 0;
   left: 0;
+  display: block;
+  margin: 0 auto;
+  top: 50px;
 }
 
 //end of canvas
