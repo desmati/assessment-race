@@ -1,0 +1,262 @@
+$primary-color: #fff;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: $primary-color;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+canvas {
+  display: block;
+  margin: 0 auto;
+  top: 50px;
+}
+
+#game-container {
+  display: none;
+}
+
+.score-container {
+  /*background-color: red;*/
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: transform 0.5s 4s;
+}
+
+.score-container #score {
+  color: white;
+  font-size: 8vh;
+  font-family: "Exo", sans-serif;
+  font-weight: 700;
+}
+
+#scene {
+  margin: 0;
+  border: 0 none;
+}
+//start sass
+//welcome Container
+
+.welcome-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  h1 {
+    color: $primary-color;
+    letter-spacing: 3px;
+    margin: 3rem;
+    font-weight: 800;
+    text-align: center;
+  }
+  .demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    div {
+      color: $primary-color;
+      margin: 1rem 0rem;
+    }
+  }
+  .button-groups {
+    display: grid;
+    place-content: center;
+    a {
+      padding: 8px 16px;
+      background-color: $primary-color;
+      color: black;
+      border-radius: 1rem;
+      border: none;
+      margin: 0 0.5rem;
+      font-weight: 800;
+      text-decoration: none;
+      &:active {
+        background-color: green;
+        color: white;
+      }
+    }
+  }
+}
+
+//end of welcome container
+
+//game Container
+.game-container {
+  .score-container {
+    #score {
+    }
+  }
+  #scene {
+  }
+}
+
+//end of game container
+
+//instructions-container
+%section-shared {
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+}
+%content-shared {
+  border: 1px solid $primary-color;
+  width: 50%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 4rem;
+  color: $primary-color;
+}
+%atag-shared {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  background-color: #000;
+}
+
+.instructions-container {
+  display: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  .first {
+    @extend %section-shared;
+    padding: 2rem;
+    display: grid;
+    place-content: center;
+    .container {
+      svg {
+      }
+    }
+    h2 {
+      color: $primary-color;
+    }
+  }
+  .second {
+    @extend %section-shared;
+    display: flex;
+    .content-one {
+      @extend %content-shared;
+      p {
+        font-size: 24px;
+        color: $primary-color;
+      }
+      a {
+        @extend %atag-shared;
+      }
+      @media screen and (max-width: 992px) {
+        width: 100%;
+      }
+    }
+    .content-two {
+      @extend %content-shared;
+      p {
+        font-size: 24px;
+        color: $primary-color;
+      }
+      a {
+        @extend %atag-shared;
+      }
+      @media screen and (max-width: 992px) {
+        width: 100%;
+      }
+    }
+    @media screen and (max-width: 992px) {
+      flex-direction: column;
+    }
+  }
+  .third {
+    color: $primary-color;
+    @extend %section-shared;
+    .amin {
+      padding: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4rem;
+      p {
+      }
+      button {
+        background-color: palevioletred;
+        border-radius: 1rem;
+        border: none;
+        padding: 0.5rem 1rem;
+        color: $primary-color;
+        &:active {
+          background-color: black;
+        }
+      }
+      img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 1rem;
+      }
+    }
+  }
+  .fourth {
+    color: $primary-color;
+    @extend %section-shared;
+    .amin2 {
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2rem;
+      p {
+      }
+      button {
+      }
+      img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 1rem;
+      }
+      .btn-start {
+        padding: .5rem;
+        width: 100px;
+        height: 50px;
+        border: none;
+        border-radius: 0.5rem;
+        background-color: yellow;
+        color: #000;
+        transition: all 0.5s ease;
+        &:hover {
+          transform: translate(10px);
+          width: 100px;
+          height: 50px;
+          border: none;
+          border-radius: 0.5rem;
+          background-color: rgb(34, 255, 0);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+//end of instructions-container
+
+//canvas
+.canvasEl {
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+//end of canvas

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assessment Race - Exploring Code</title>
 
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style.scss" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div id="game-container">
+    <div class="game-container" id="game-container">
         <div class="score-container">
             <div id="score"></div>
         </div>
@@ -39,7 +39,7 @@
         <div id="scene"></div>
     </div>
 
-    <div id="instructions-container">
+    <div class="instructions-container" id="instructions-container">
         <div class="first">
             <div class="container">
                 <svg width="900" height="840" viewBox="0 0 2505 840" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1273,7 +1273,7 @@
             <h2>Why Are you waiting ? scroll down to explore Frontend developement in HI</h2>
         </div>
         <div class="second">
-            <div class="content">
+            <div class="content-one">
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
                     laboriosam, eligendi minus atque et vitae iste rerum voluptatum harum
@@ -1282,7 +1282,7 @@
                 </p>
                 <a href="">hello</a>
             </div>
-            <div class="content">
+            <div class="content-two">
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
                     laboriosam, eligendi minus atque et vitae iste rerum voluptatum harum
@@ -1336,7 +1336,7 @@
         </div>
     </div>
 
-    <canvas id="canvas1-win"></canvas>
+    <canvas class="canvasEl" id="canvas1-win"></canvas>
 
     <script src="./js/scripts.js" type="module"></script>
 </body>
