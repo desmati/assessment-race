@@ -1,6 +1,6 @@
 $primary-color: #ffffff;
 $black-color: #000000;
-@import url('https://fonts.googleapis.com/css2?family=Kablammo&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kablammo&display=swap");
 
 //center item shared
 
@@ -15,14 +15,14 @@ $black-color: #000000;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Kablammo', cursive;
+  font-family: "Kablammo", cursive;
 }
 body {
   background-color: $primary-color;
   overflow-x: hidden;
   padding: 0;
   margin: 0;
-  font-family: 'Kablammo', cursive;
+  font-family: "Kablammo", cursive;
 }
 
 //start sass
@@ -85,7 +85,7 @@ body {
       color: $primary-color;
       font-size: 8vh;
 
-      font-family: 'Kablammo', cursive;
+      font-family: "Kablammo", cursive;
 
       font-weight: 700;
     }
@@ -136,7 +136,7 @@ body {
     }
     h2 {
       color: $primary-color;
-      letter-spacing: 4px
+      letter-spacing: 4px;
     }
   }
   .second {
