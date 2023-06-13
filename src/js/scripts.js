@@ -155,7 +155,7 @@ function initInstructions() {
     gsap.registerPlugin(ScrollTrigger);
     let tl = gsap.timeline();
     tl.fromTo(
-        "#instructions-container .content",
+        ["#instructions-container .content-one","#instructions-container .content-two"],
         { yPercent: 10, scale: 0.2 },
         {
             opacity: 1,
