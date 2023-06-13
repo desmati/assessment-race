@@ -54,7 +54,10 @@ canvas {
     align-items: center;
     gap: 1rem;
 }
-
+.button-groups{
+    display: grid;
+    place-content: center;
+}
 .welcome-container .button-groups a {
     padding: 8px 16px;
     background-color: #fff;
@@ -76,6 +79,14 @@ canvas {
     letter-spacing: 3px;
     margin: 3rem;
     font-weight: 800;
+    text-align: center;
+}
+
+.welcome-container .demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .welcome-container .demo>div {
@@ -239,4 +250,23 @@ instructions-container {
     font-size: 16px;
     border: none;
     cursor: pointer;
+}
+.btn-start{
+    padding: 3rem;
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: .5rem;
+    background-color: yellow;
+    color: #000;
+    transition: all .5s ease;
+}
+.btn-start:hover{
+    transform: translate(10px);
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: .5rem;
+    background-color: rgb(34, 255, 0);  
+    text-decoration: underline;
 }
